@@ -11,7 +11,7 @@ export default function Button({ symbol, backgroundColor}) {
   const styles = {
     background: 'none',
     border: '4px solid black',
-    borderRadius: '25%',
+    borderRadius: '25px',
     cursor: 'pointer',
     height: 96,
     width: 96,
