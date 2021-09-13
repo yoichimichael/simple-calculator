@@ -7,7 +7,7 @@ Props:
 
 */
 
-export default function Button({idx}) {
+export default function Button({ symbol, backgroundColor}) {
   const styles = {
     background: 'none',
     border: '4px solid black',
@@ -16,11 +16,11 @@ export default function Button({idx}) {
     height: 96,
     width: 96,
     fontSize: 48,
-    fontWeight: 700
-
+    fontWeight: 700,
+    backgroundColor
   }
 
   return (
-    <button style={styles}>{idx + 1}</button>
+    <button style={styles}>{symbol}</button>
   )
 }
