@@ -2,14 +2,14 @@ import logo from './logo.svg';
 import './App.css';
 import Pad from './components/Pad';
 
-/*
-
-
-*/
+const styles = {
+  display: 'flex',
+  justifyContent: 'center',
+}
 
 function App() {
   return (
-    <div className="App">
+    <div style={styles}>
       <Pad></Pad>
     </div>
   );

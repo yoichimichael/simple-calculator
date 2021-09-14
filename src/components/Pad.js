@@ -14,6 +14,9 @@ export default function Pad() {
     // gridTemplateRows: 'repeat(5, min-content)',
     gridColumnGap: 10,
     gridRowGap: 10,
+    padding: '24px',
+    border: '4px solid black',
+    borderRadius: 24,
   }
 
   const buttonProperties = [
