@@ -29,7 +29,7 @@ export default function Pad() {
   const [firstNum, setFirstNum] = useState(0);
   const [secondNum, setSecondNum] = useState(0);
   const [operator, setOperator] = useState('');
-  const [result, setResult] = useState(0);
+  const [result, setResult] = useState(null);
 
   useEffect(() => {
     setButtonProperties(BUTTON_PROPERTIES);
@@ -49,11 +49,11 @@ export default function Pad() {
     setOperator('');
     setFirstNum(0);
     setSecondNum(0);
-    setResult(0);
+    setResult(null);
   }
 
   function enterNumber(num){
-    if (result) clearEntry();
+    if (result !== null) clearEntry();
     if (!operator) setFirstNum(firstNum * 10 + num);
     else setSecondNum(secondNum * 10 + num);
   }
@@ -71,6 +71,8 @@ export default function Pad() {
         break;
       case '÷':
         setResult(firstNum / secondNum);
+      default:
+        return;
     }
   }
 
@@ -91,7 +93,7 @@ export default function Pad() {
   console.log({firstNum, operator, secondNum, result});
   return (
     <div style={styles}>
-      <Display entry={result ? result : operator ? secondNum : firstNum}/>
+      <Display entry={result !== null ? result : operator ? secondNum : firstNum}/>
       {buttonProperties.length ? buttonProperties.map((p, i) => <Button key={i} symbol={p[0]} backgroundColor={p[1]} callback={determineCallback(p[0])}/>) : null}
     </div>
   )

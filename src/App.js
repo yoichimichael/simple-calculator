@@ -2,8 +2,10 @@ import './App.css';
 import Pad from './components/Pad';
 
 const styles = {
+  height: '100vh',
   display: 'flex',
   justifyContent: 'center',
+  alignItems: 'center',
 }
 
 function App() {
