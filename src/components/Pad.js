@@ -29,6 +29,7 @@ export default function Pad() {
   const [firstNum, setFirstNum] = useState(0);
   const [secondNum, setSecondNum] = useState(0);
   const [operator, setOperator] = useState('');
+  const [result, setResult] = useState(0);
 
   useEffect(() => {
     setButtonProperties(BUTTON_PROPERTIES);
@@ -48,11 +49,29 @@ export default function Pad() {
     setOperator('');
     setFirstNum(0);
     setSecondNum(0);
+    setResult(0);
   }
 
   function enterNumber(num){
+    if (result) clearEntry();
     if (!operator) setFirstNum(firstNum * 10 + num);
-    else return setSecondNum(secondNum * 10 + num);
+    else setSecondNum(secondNum * 10 + num);
+  }
+
+  function compute(){
+    switch(operator){
+      case '+':
+        setResult(firstNum + secondNum);
+        break;
+      case '–':
+        setResult(firstNum - secondNum);
+        break;
+      case 'X':
+        setResult(firstNum * secondNum);
+        break;
+      case '÷':
+        setResult(firstNum / secondNum);
+    }
   }
 
   function determineCallback(symbol){
@@ -60,7 +79,7 @@ export default function Pad() {
       return enterNumber;
     } else {
       if (symbol === '=') {
-
+        return compute;
       } else if (symbol === 'C') {
          return clearEntry;
       } else {
@@ -69,10 +88,10 @@ export default function Pad() {
     }
   }
 
-  console.log({firstNum, operator, secondNum});
+  console.log({firstNum, operator, secondNum, result});
   return (
     <div style={styles}>
-      <Display entry={operator ? secondNum : firstNum}/>
+      <Display entry={result ? result : operator ? secondNum : firstNum}/>
       {buttonProperties.length ? buttonProperties.map((p, i) => <Button key={i} symbol={p[0]} backgroundColor={p[1]} callback={determineCallback(p[0])}/>) : null}
     </div>
   )
