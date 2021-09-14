@@ -1,4 +1,4 @@
-export default function Display(){
+export default function Display({ entry }){
   const styles = {
     container: {
       gridColumnStart: 'span 4',
@@ -19,7 +19,7 @@ export default function Display(){
 
   return (
     <div style={styles.container}>
-      <span style={styles.text}>2349823</span>
+      <span style={styles.text}>{entry}</span>
     </div>
   )
 }

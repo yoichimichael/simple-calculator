@@ -7,7 +7,7 @@ Props:
 
 */
 
-export default function Button({ symbol, backgroundColor}) {
+export default function Button({ symbol, backgroundColor, callback}) {
   const styles = {
     background: 'none',
     border: '4px solid black',
@@ -21,6 +21,6 @@ export default function Button({ symbol, backgroundColor}) {
   }
 
   return (
-    <button style={styles}>{symbol}</button>
+    <button style={styles} onClick={() => callback(symbol)}>{symbol}</button>
   )
 }
